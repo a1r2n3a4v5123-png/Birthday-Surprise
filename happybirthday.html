@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday My Lil Bird</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top right, #fff0f5, #e0f7fa);
+      font-family: 'Comic Sans MS', cursive;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #loader {
+      font-size: 2rem;
+      color: #ff69b4;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    .cake {
+      display: none;
+      position: relative;
+      width: 220px;
+      height: 160px;
+      background: #ffb6c1;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      animation: pop 1s ease;
+    }
+
+    .cake::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 40px;
+      background: #6b3e26;
+      border-radius: 3px;
+    }
+
+    .flame {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 24px;
+      background: radial-gradient(circle, yellow 50%, orange 70%);
+      border-radius: 50% 50% 50% 50%;
+      opacity: 0;
+      animation: flicker 0.5s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+      100% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+    }
+
+    .message {
+      font-size: 1.6rem;
+      color: #d6336c;
+      text-align: center;
+      margin-top: 20px;
+      display: none;
+      animation: rise 2s ease forwards;
+      font-weight: bold;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .explode {
+      animation: explode 1s forwards;
+    }
+
+    @keyframes explode {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.5) rotate(360deg); opacity: 0; }
+    }
+
+    .floating {
+      position: absolute;
+      top: 100vh;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.1);
+        opacity: 0;
+      }
+    }
+    .photo {
+      width: 120px;
+      height: 160px;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-right: 15px;
+      border: 4px solid #ff69b4;
+      box-shadow: 0 0 10px pink;
+    }
+
+    .side {
+      position: absolute;
+      top: 50%;
+      left: 40px;
+      transform: translateY(-50%);
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<style>
+  body {
+    background-color: #fff0f5;
+    font-family: 'Comic Sans MS', cursive;
+    text-align: center;
+    padding-top: 100px;
+    overflow: hidden;
+  }
+
+  h1 {
+    color: #ff69b4;
+    font-size: 2.5rem;
+  }
+
+  .hug-btn {
+    background-color: #ffb6c1;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ff69b4;
+    transition: all 0.2s ease;
+  }
+
+  .hug-btn:hover {
+    background-color: #ffc0cb;
+    transform: scale(1.05);
+  }
+
+  .message {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    color: #d63384;
+    display: none;
+    animation: popIn 0.5s ease forwards;
+  }
+
+  @keyframes popIn {
+    from {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .floaty {
+    position: absolute;
+    font-size: 24px;
+    animation: float 2s ease-out forwards;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  @keyframes float {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-150px) scale(1.5);
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="message" id="message" style="display: flex; align-items: center; gap: 20px;">
+    <div class="top">
+    <img src="kuchupuchu.jpg" alt="Lil Bird" class= "photo" width: 100px; height: 130px; border-radius: 12px; border: 3px solid #ff69b4; box-shadow: 0 0 12px rgba(0,0,0,0.2); object-fit: cover;>
+    <img src="mybaby.jpg" alt="Lil Bird" class= "photo" width: 100px; height: 130px; border-radius: 12px; border: 3px solid #ff69b4; box-shadow: 0 0 12px rgba(0,0,0,0.2); object-fit: cover;>
+    <img src="love.jpg" alt="Lil Bird" class= "photo" width: 100px; height: 130px; border-radius: 12px; border: 3px solid #ff69b4; box-shadow: 0 0 12px rgba(0,0,0,0.2); object-fit: cover;>
+    <img src="Bhaluu.jpg" alt="Lil Bird" class= "photo" width: 100px; height: 130px; border-radius: 12px; border: 3px solid #ff69b4; box-shadow: 0 0 12px rgba(0,0,0,0.2); object-fit: cover;>
+    <div>
+      🎉 Happy Birthday To My Lil Bird 💖<br>
+      Kuchupuchu GoluMolu 😚<br>
+      Alot of Kiiisssyyyy 😘😘😘<br>
+      — from your Dumb Orange Lil Cat 🧡🐱
+    </div>
+    <!--<p>Phela Nasha.....Phela Khumar....Naya Pyaar Hai.....Naya Intezaar.....</p>-->
+    <audio id="bgm" autoplay loop>
+      <source src="143pehlanasharingtone-2286-60719.mp3" autoplay loop type="audio/mp3">
+    </audio>
+    <div id="loader">🎁 Preparing your surprise...</div>
+
+      <div class="cake" id="cake">
+        <div class="flame" id="flame"></div>
+      </div>
+    <div>
+      <!--<p>Click as much Hearts and Hugs you want to send to your lil cat</p>-->
+      <button class="hug-btn" onclick="sendHug()">🫂 Send Hug, 💖Hearts and 😚Kisssyyy</button>
+
+  <div class="message" id="hugMessage">
+    🧡 Your warm hug went to your Dumb Lil Orange Cat!😽😽 🐾
+  </div>
+
+  <script>
+    let firstClick = true;
+
+    function sendHug() {
+      const msg = document.getElementById("hugMessage");
+
+      if (firstClick) {
+        msg.innerHTML = "🧡 Your warm hug went to your Dumb Lil Orange Cat!😽😽 🐾";
+        msg.style.display = "block";
+        firstClick = false;
+      } else {
+        // Show floating hearts + hugs + message
+        for (let i = 0; i < 10; i++) {
+          createFloaty("💖");
+          createFloaty("🫂");
+          createFloaty("😘");
+          createFloaty("😚");
+        }
+        msg.innerHTML = "💖🫂 Your Dumb Lil Orange Cat is always there for you, lil bird 😽💖🫂, <p>😚Taang Krne Ka Toose Nata Hai Gujariya🫶</p>";
+        msg.style.display = "block";
+      }
+    }
+
+    function createFloaty(emoji) {
+      const floaty = document.createElement("div");
+      floaty.className = "floaty";
+      floaty.innerText = emoji;
+      floaty.style.left = Math.random() * 100 + "vw";
+      floaty.style.top = Math.random() * 60 + 20 + "vh";
+      floaty.style.fontSize = Math.random() * 20 + 20 + "px";
+      document.body.appendChild(floaty);
+
+      setTimeout(() => {
+        floaty.remove();
+      }, 2000);
+    }
+  </script>
+  </div>
+
+  <script>
+    // Show cake after 5 seconds
+    setTimeout(() => {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("cake").style.display = "block";
+
+      // Light candle
+      setTimeout(() => {
+        document.getElementById("flame").style.opacity = "1";
+
+        // Explode cake
+        setTimeout(() => {
+          document.getElementById("cake").classList.add("explode");
+
+          // Show message
+          setTimeout(() => {
+            document.getElementById("cake").style.display = "none";
+            document.getElementById("message").style.display = "block";
+          }, 1000);
+
+        }, 2500); // explode after 2.5s of flame
+
+      }, 1000); // light flame 1s after cake shows
+    }, 5000);
+
+    // Floating balloons & hearts
+    function createFloaters() {
+      const emojis = ["🎈", "💖", "🎉", "💕", "🎊"];
+      for (let i = 0; i < 20; i++) {
+        const float = document.createElement("div");
+        float.classList.add("floating");
+        float.style.left = Math.random() * 100 + "vw";
+        float.style.fontSize = Math.random() * 20 + 20 + "px";
+        float.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        float.style.animationDuration = (Math.random() * 3 + 4) + "s";
+        document.body.appendChild(float);
+        setTimeout(() => float.remove(), 8000);
+      }
+    }
+
+    setInterval(createFloaters, 1500);
+  </script>
+</body>
+</html>
